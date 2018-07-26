@@ -63,40 +63,36 @@ fn too_long_is_invalid() {
 }
 
 #[test]
-#[ignore]
 fn test_translates_rna_strand_into_correct_protein() {
     let info = proteins::parse(make_pairs());
-    //assert_eq!(
-    //    info.of_rna("AUGUUUUGG"),
-    //    Ok(vec!["methionine", "phenylalanine", "tryptophan"])
-    //);
+    assert_eq!(
+        info.of_rna("AUGUUUUGG"),
+        Ok(vec!["methionine", "phenylalanine", "tryptophan"])
+    );
 }
 
 #[test]
-#[ignore]
 fn test_stops_translation_if_stop_codon_present() {
     let info = proteins::parse(make_pairs());
-    //assert_eq!(
-    //    info.of_rna("AUGUUUUAA"),
-    //    Ok(vec!["methionine", "phenylalanine"])
-    //);
+    assert_eq!(
+        info.of_rna("AUGUUUUAA"),
+        Ok(vec!["methionine", "phenylalanine"])
+    );
 }
 
 #[test]
-#[ignore]
 fn test_stops_translation_of_longer_strand() {
     let info = proteins::parse(make_pairs());
-    //assert_eq!(
-    //    info.of_rna("UGGUGUUAUUAAUGGUUU"),
-    //    Ok(vec!["tryptophan", "cysteine", "tyrosine"])
-    //);
+    assert_eq!(
+        info.of_rna("UGGUGUUAUUAAUGGUUU"),
+        Ok(vec!["tryptophan", "cysteine", "tyrosine"])
+    );
 }
 
 #[test]
-#[ignore]
 fn test_invalid_codons() {
     let info = proteins::parse(make_pairs());
-    //assert!(info.of_rna("CARROT").is_err());
+    assert!(info.of_rna("CARROT").is_err());
 }
 
 // The input data constructor. Returns a list of codon, name pairs.
